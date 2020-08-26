@@ -1,0 +1,60 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Kalle Norrestam
+	email = kalle.norrestam@empear.com
+[core]
+	excludesfile = /Users/kalle/.gitignore
+	fileMode = false
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+	path = -ro
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+	trustExitCode = true
+
+[alias]
+	a = add
+	au = !git add -u . && git status
+	aa = !git add . && git add -u . && git status
+	ac = !git add . && git commit
+	acm = !git add . && git commit -m
+	b = branch
+	c = commit
+	cm = commit -m
+	ca = commit --amend # careful
+	co = checkout
+	d = diff
+	dt = difftool
+	l1 = log --pretty=oneline --color=always
+	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+	ll = log --stat --abbrev-commit
+	lg = log --color --graph --pretty=format:'%C(bold white)%h%Creset -%C(bold green)%d%Creset %s %C(bold green)(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	llg = log --color --graph --pretty=format:'%C(bold white)%H %d%Creset%n%s%n%+b%C(bold blue)%an <%ae>%Creset %C(bold green)%cr (%ci)' --abbrev-commit
+	master = checkout master
+	s = status
+	st = status -sb
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+[color]
+	ui = true
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+
+
+[difftool "bc"]
+        trustExitCode = true
+	    cmd = "/usr/local/bin/bcomp" \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "bc"]
+        trustExitCode = true
+	    cmd = "/usr/local/bin/bcomp"  \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+
+[commit]
+	template = /Users/kalle/.stCommitMsg
