@@ -1,0 +1,9 @@
+# Create (or attach to) a configured session group
+tsg () {
+  export TMUX_SESSION=$1
+  if ! $(tmux has-session -t "${TMUX_SESSION}") ; then
+    tmux new-session -s "${TMUX_SESSION}" \; source-file "$HOME/.tmux/${TMUX_SESSION}.conf"
+  else
+    tmux new-session -t "${TMUX_SESSION}" \; set-option destroy-unattached
+  fi
+}
