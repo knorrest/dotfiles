@@ -34,6 +34,3 @@
 [submodule "/Users/kalle/.vim/pack/plugins/start/vim-repeat"]
 	path = /Users/kalle/.vim/pack/plugins/start/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
-[submodule "/Users/kalle/.vim/pack/plugins/start/ctrlp.vim"]
-	path = /Users/kalle/.vim/pack/plugins/start/ctrlp.vim
-	url = git@github.com:ctrlpvim/ctrlp.vim.git

@@ -31,6 +31,8 @@ unsetopt HIST_VERIFY
 export HISTSIZE=50000
 export SAVEHIST=50000
 
+export FZF_DEFAULT_COMMAND='rg --files'
+
 # Make cursor mode-dependant
 #let &t_SI.="\e[5 q" "SI = INSERT mode
 #let &t_SR.="\e[4 q" "SR = REPLACE mode
