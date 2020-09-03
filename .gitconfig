@@ -58,3 +58,5 @@
 
 [commit]
 	template = /Users/kalle/.stCommitMsg
+[pull]
+	ff = only
