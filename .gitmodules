@@ -1,36 +1,36 @@
 [submodule ".vim/pack/plugins/start/vim-sexp"]
-	path = .vim/pack/plugins/start/vim-sexp
+	path = .vim/pack/plugins/opt/vim-sexp
 	url = git@github.com:guns/vim-sexp.git
 [submodule ".vim/pack/plugins/start/ale"]
-	path = .vim/pack/plugins/start/ale
+	path = .vim/pack/plugins/opt/ale
 	url = https://github.com/dense-analysis/ale.git
 [submodule ".vim/pack/plugins/start/fzf"]
-	path = .vim/pack/plugins/start/fzf
+	path = .vim/pack/plugins/opt/fzf
 	url = git@github.com:junegunn/fzf.git
 [submodule ".vim/pack/plugins/start/fzf.vim"]
-	path = .vim/pack/plugins/start/fzf.vim
+	path = .vim/pack/plugins/opt/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
 [submodule ".vim/pack/plugins/start/vim-sneak"]
-	path = .vim/pack/plugins/start/vim-sneak
+	path = .vim/pack/plugins/opt/vim-sneak
 	url = git@github.com:justinmk/vim-sneak.git
 [submodule ".vim/pack/plugins/start/fireplace"]
-	path = .vim/pack/plugins/start/fireplace
+	path = .vim/pack/plugins/opt/fireplace
 	url = https://tpope.io/vim/fireplace.git
 [submodule ".vim/pack/plugins/start/sensible"]
-	path = .vim/pack/plugins/start/sensible
+	path = .vim/pack/plugins/opt/sensible
 	url = https://tpope.io/vim/sensible.git
 [submodule ".vim/pack/plugins/start/sleuth"]
-	path = .vim/pack/plugins/start/sleuth
+	path = .vim/pack/plugins/opt/sleuth
 	url = https://tpope.io/vim/sleuth.git
 [submodule ".vim/pack/plugins/start/surround"]
-	path = .vim/pack/plugins/start/surround
+	path = .vim/pack/plugins/opt/surround
 	url = https://tpope.io/vim/surround.git
 [submodule ".vim/pack/plugins/start/unimpaired"]
-	path = .vim/pack/plugins/start/unimpaired
+	path = .vim/pack/plugins/opt/unimpaired
 	url = https://tpope.io/vim/unimpaired.git
 [submodule ".vim/pack/plugins/start/vim-repeat"]
-	path = .vim/pack/plugins/start/vim-repeat
+	path = .vim/pack/plugins/opt/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
 [submodule ".vim/pack/plugins/start/vim-sexp-mappings-for-regular-people"]
-	path = .vim/pack/plugins/start/vim-sexp-mappings-for-regular-people
+	path = .vim/pack/plugins/opt/vim-sexp-mappings-for-regular-people
 	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people.git
