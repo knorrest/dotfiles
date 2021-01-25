@@ -1,12 +1,19 @@
 *~
+# Folders anywhere
+.calva/
+.clj-kondo/
+.lsp/
+.vscode/
+# Files anywhere
 .DS_Store
 .env
 .envrc
-/fzf.vim
-/.vscode
-/.calva
-/checkouts
-/out
-/tmp
-/tags
 *.bak
+*.mv.db*
+scratch.clj
+# Folders relative
+/checkouts/
+/out/
+/tmp/
+# Files relative
+/tags

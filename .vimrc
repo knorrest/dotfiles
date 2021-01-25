@@ -1,5 +1,24 @@
 :let mapleader = " "
 
+" Load plugins
+packadd! surround
+packadd! vim-repeat
+packadd! vim-sneak
+packadd! vim-sexp
+packadd! vim-sexp-mappings-for-regular-people
+packadd! vim-visual-star-search
+if !exists('g:vscode')
+  packadd! ale
+  packadd! fireplace
+  packadd! fzf
+  packadd! fzf.vim
+  packadd! sensible
+  packadd! sleuth
+  packadd! vlime
+endif
+
+" General shortcuts
+" nnoremap <leader>r :source ~/.vimrc<CR>
 "imap jj <Esc>
 
 " Turn off cursor keys in normal mode
@@ -7,15 +26,6 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-" In insert or command mode, move normally by using Ctrl
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-cnoremap <C-h> <Left>
-cnoremap <C-j> <Down>
-cnoremap <C-k> <Up>
-cnoremap <C-l> <Right>
 
 " copy/paste to "+ (clipboard)
 vmap <Leader>y "+y
@@ -25,12 +35,30 @@ map <Leader>P "+P
 vmap <Leader>P "+P
 
 " allows incsearch highlighting for range commands
-" (acts like :?foo?t. but separate search from action)
+" (acts like :?foo?t. but separate search from action, /foo then $t)
 cnoremap $t <CR>:t''<CR>
 cnoremap $T <CR>:T''<CR>
 cnoremap $m <CR>:m''<CR>
 cnoremap $M <CR>:M''<CR>
 cnoremap $d <CR>:d<CR>``
+
+" mappings like unimpaired
+nnoremap <silent> [a :<C-U>previous<CR>
+nnoremap <silent> ]a :<C-U>next<CR>
+nnoremap <silent> [A :<C-U>first<CR>
+nnoremap <silent> ]A :<C-U>last<CR>
+nnoremap <silent> [b :<C-U>bprevious<CR>
+nnoremap <silent> ]b :<C-U>bnext<CR>
+nnoremap <silent> [B :<C-U>bfirst<CR>
+nnoremap <silent> ]B :<C-U>blast<CR>
+nnoremap <silent> [l :<C-U>lprevious<CR>
+nnoremap <silent> ]l :<C-U>lnext<CR>
+nnoremap <silent> [L :<C-U>lfirst<CR>
+nnoremap <silent> ]L :<C-U>llast<CR>
+nnoremap <silent> [q :<C-U>cprevious<CR>
+nnoremap <silent> ]q :<C-U>cnext<CR>
+nnoremap <silent> [Q :<C-U>cfirst<CR>
+nnoremap <silent> ]Q :<C-U>clast<CR>
 
 nmap <C-P> :FZF<CR>
 
@@ -43,6 +71,9 @@ endif
 syntax on
 set mouse=a
 set laststatus=0
+
+":autocmd InsertEnter * set cul
+":autocmd InsertLeave * set nocul
 
 "Mode Settings
 
@@ -58,3 +89,8 @@ let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
 "  4 -> solid underscore
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
+
+if exists('g:vscode')
+  nnoremap <silent> <leader>* :<C-u>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
+  nnoremap <silent> <leader>/ :<C-u>call VSCodeNotify('workbench.action.findInFiles')<CR>
+endif
