@@ -16,6 +16,9 @@ if !exists('g:vscode')
   packadd! sleuth
   packadd! vlime
 endif
+if has('nvim')
+  packadd! conjure
+endif
 
 " General shortcuts
 " nnoremap <leader>r :source ~/.vimrc<CR>
