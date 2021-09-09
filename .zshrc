@@ -81,6 +81,7 @@ alias -8='cd -8'
 alias -9='cd -9'
 
 [ -f ~/.zsh_functions ] && source ~/.zsh_functions
-[ -f ~/.fzf_functions ] && source ~/.fzf_functions
+#[ -f ~/.fzf_functions ] && source ~/.fzf_functions
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 #eval "$(direnv hook zsh)"

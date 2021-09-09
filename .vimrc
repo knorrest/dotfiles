@@ -9,15 +9,16 @@ packadd! vim-sexp-mappings-for-regular-people
 packadd! vim-visual-star-search
 if !exists('g:vscode')
   packadd! ale
-  packadd! fireplace
   packadd! fzf
   packadd! fzf.vim
   packadd! sensible
   packadd! sleuth
   packadd! vlime
-endif
-if has('nvim')
-  packadd! conjure
+  if has('nvim')
+    packadd! conjure
+  else
+    packadd! fireplace
+  endif
 endif
 
 " General shortcuts
