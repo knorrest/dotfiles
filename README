@@ -1,0 +1,6 @@
+# dotfiles
+
+This repo is intended for use as a bare repository with the HOME directory as work tree
+* git init --bare $HOME/.cfg
+* alias dotfiles='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
