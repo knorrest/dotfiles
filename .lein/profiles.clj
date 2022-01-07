@@ -1,7 +1,8 @@
 {:user {:plugins [;[lein-localrepo "0.5.4"]
                   [lein-pprint  "1.2.0"]
                   ;[lein-cloverage  "1.1.2"]
-                  ]}
+                  ]
+        :dependencies [[philoskim/debux  "0.8.1"]]}
  :vim [:dev
        {:plugins [[cider/cider-nrepl  "0.25.5"]
                   [venantius/ultra  "0.6.0"]]} ]
