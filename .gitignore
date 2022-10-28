@@ -4,6 +4,7 @@
 .clj-kondo/
 .lsp/
 .vscode/
+tmp/
 # Files anywhere
 .DS_Store
 .env
@@ -15,6 +16,5 @@ scratch.clj
 # Folders relative
 /checkouts/
 /out/
-/tmp/
 # Files relative
 /tags
