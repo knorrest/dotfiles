@@ -1,4 +1,5 @@
 :let mapleader = " "
+:let maplocalleader = " "
 
 " Load plugins
 packadd! surround
