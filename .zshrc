@@ -80,6 +80,9 @@ alias -7='cd -7'
 alias -8='cd -8'
 alias -9='cd -9'
 
+export NVM_DIR=~/.nvm 
+source $(brew --prefix nvm)/nvm.sh
+
 [ -f ~/.zsh_functions ] && source ~/.zsh_functions
 #[ -f ~/.fzf_functions ] && source ~/.fzf_functions
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
