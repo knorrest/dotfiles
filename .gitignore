@@ -5,6 +5,8 @@
 .lsp/
 .vscode/
 tmp/
+caches/
+knorrest/
 # Files anywhere
 .DS_Store
 .env
@@ -12,6 +14,9 @@ tmp/
 *.swp
 *.bak
 *.mv.db*
+*.out
+*.log
+* copy*.*
 scratch.clj
 # Folders relative
 /checkouts/
