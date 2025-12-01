@@ -34,6 +34,6 @@
 [submodule ".vim/pack/plugins/start/vim-sexp-mappings-for-regular-people"]
 	path = .vim/pack/plugins/opt/vim-sexp-mappings-for-regular-people
 	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people.git
-[submodule "/Users/kalle/.vim/pack/plugins/opt/conjure"]
-	path = /Users/kalle/.vim/pack/plugins/opt/conjure
+[submodule ".vim/pack/plugins/opt/conjure"]
+	path = .vim/pack/plugins/opt/conjure
 	url = https://github.com/Olical/conjure.git

@@ -1,11 +1,13 @@
 *~
 # Folders anywhere
 .calva/
+.antlr/
 .clj-kondo/
 .lsp/
 .vscode/
 tmp/
 caches/
+.caches/
 knorrest/
 # Files anywhere
 .DS_Store
@@ -23,3 +25,5 @@ scratch.clj
 /out/
 # Files relative
 /tags
+# antlr test input
+*.input.txt

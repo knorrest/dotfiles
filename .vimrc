@@ -7,18 +7,23 @@ packadd! vim-repeat
 packadd! vim-sneak
 packadd! vim-sexp
 packadd! vim-sexp-mappings-for-regular-people
-packadd! vim-visual-star-search
+" packadd! vim-visual-star-search
 if !exists('g:vscode')
   packadd! ale
   packadd! fzf
   packadd! fzf.vim
   packadd! sensible
   packadd! sleuth
-  packadd! vlime
+  " packadd! vlime
   if has('nvim')
     packadd! conjure
   else
     packadd! fireplace
+  endif
+else
+  if has('nvim')
+    " exit insert mode when switching buffers
+    au BufEnter * stopinsert
   endif
 endif
 
