@@ -37,3 +37,4 @@
 [submodule ".vim/pack/plugins/opt/conjure"]
 	path = .vim/pack/plugins/opt/conjure
 	url = https://github.com/Olical/conjure.git
+	branch = main
