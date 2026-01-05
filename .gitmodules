@@ -38,3 +38,18 @@
 	path = .vim/pack/plugins/opt/conjure
 	url = https://github.com/Olical/conjure.git
 	branch = main
+[submodule ".vim/pack/plugins/opt/vscode.nvim"]
+	path = .vim/pack/plugins/opt/vscode.nvim
+	url = https://github.com/Mofiqul/vscode.nvim.git
+[submodule ".vim/pack/plugins/opt/vim-vinegar"]
+	path = .vim/pack/plugins/opt/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule ".vim/pack/plugins/opt/vim-fugitive"]
+	path = .vim/pack/plugins/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/pack/plugins/opt/nvim-treesitter"]
+	path = .vim/pack/plugins/opt/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule ".vim/pack/plugins/opt/nvim-lspconfig"]
+	path = .vim/pack/plugins/opt/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git

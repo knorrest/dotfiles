@@ -1,14 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 export PATH="/usr/local/opt/sphinx-doc/bin:$HOME/bin:$PATH"
 export CPATH=`xcrun --show-sdk-path`/usr/include
-export JAVA_HOME=$(/usr/libexec/java_home -v23)
-export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-jdk-23.0.2+7.1/Contents/Home/
+export JAVA_HOME=$(/usr/libexec/java_home -v25)
+export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-jdk-25.0.1+8.1/Contents/Home
 
 # User configuration
-
-export EDITOR='vim'
-
-bindkey -e
 
 unsetopt SHARE_HISTORY
 setopt INC_APPEND_HISTORY
@@ -16,7 +12,7 @@ unsetopt HIST_VERIFY
 export HISTSIZE=50000
 export SAVEHIST=50000
 
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 #export FZF_DEFAULT_OPTS='--tmux 100%'
 
 # Similar to oh-my-zsh?
@@ -37,10 +33,38 @@ setopt PUSHD_MINUS
 # Turn on completion
 autoload -Uz compinit && compinit
 
-# Make cursor mode-dependant
-#let &t_SI.="\e[5 q" "SI = INSERT mode
-#let &t_SR.="\e[4 q" "SR = REPLACE mode
-#let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+# Use vim as commandline editor
+
+export EDITOR='vim'
+bindkey -v
+
+# Remove mode switching delay.
+KEYTIMEOUT=5
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[2 q'
+
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[6 q'
+  fi
+}
+zle -N zle-keymap-select
+
+_fix_cursor() {
+   echo -ne '\e[6 q'
+}
+
+precmd_functions+=(_fix_cursor)
+
+# Enable a few readline shortcuts in insert mode
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
 
 # command aliases
 alias ls='ls -G' 
@@ -86,6 +110,8 @@ alias -9='cd -9'
 export NVM_DIR=~/.nvm 
 source $(brew --prefix nvm)/nvm.sh
 
+alias ctags="$(brew --prefix)/bin/ctags"
+
 # Prompt
 
 PROMPT='
@@ -118,10 +144,12 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# command line edit
-autoload -Uz edit-commmand-line && zle -N edit-command-line
+# Set up edit-command-line
+autoload edit-command-line; zle -N edit-command-line
 bindkey '^X^e' edit-command-line
+bindkey -M vicmd ' ' edit-command-line
 
+# Add to PATH
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="$PATH:/Users/kalle/.dotnet/tools"
 export PATH=$PATH:/Users/kalle/.local/bin
