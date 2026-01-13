@@ -9,6 +9,7 @@ packadd! vim-sexp
 packadd! vim-sexp-mappings-for-regular-people
 packadd! vim-vinegar
 packadd! vim-fugitive
+packadd! vim-rsi
 
 " packadd! vim-visual-star-search
 if !exists('g:vscode')
@@ -23,7 +24,11 @@ if !exists('g:vscode')
     packadd! vscode.nvim
     packadd! nvim-treesitter
     packadd! nvim-lspconfig
-    lua vim.lsp.enable('clojure_lsp')
+    packadd! snacks.nvim
+    packadd! which-key.nvim
+    packadd! nvim-web-devicons
+    packadd! mini.icons
+    packadd! blink.cmp
   else
     packadd! fireplace
   endif
@@ -45,11 +50,25 @@ endif
 " nnoremap <leader>r :source ~/.vimrc<CR>
 "imap jj <Esc>
 
+
+" Switch the annoying arrow keys when using the :e command
+set wildmode=longest:full,full
+:
+" https://vi.stackexchange.com/questions/22627/switching-arrow-key-mappings-for-wildmenu-tab-completion
+set wildcharm=<C-Z>
+cnoremap <expr> <up> wildmenumode() ? "\<left>" : "\<up>"
+cnoremap <expr> <down> wildmenumode() ? "\<right>" : "\<down>"
+cnoremap <expr> <left> wildmenumode() ? "\<up>" : "\<left>"
+cnoremap <expr> <right> wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
+
 " Turn off cursor keys in normal mode
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" Open vertical splits on the right side
+set splitright
 
 " copy/paste to "+ (clipboard)
 vmap <Leader>y "+y
@@ -74,7 +93,7 @@ augroup vimrc-incsearch-highlight
 augroup END
 
 " ...but add a shortcut for highlighting search
-nnoremap <Leader>/ set hls!<CR>
+" nnoremap <Leader>/ :set hls!<CR>
 
 " Async Lint Engine config
 let g:ale_linters = {'clojure': ['clj-kondo']}
@@ -117,6 +136,8 @@ command! -bang -nargs=* MyAg call fzf#vim#ag(<q-args>, {'options': '--delimiter 
 syntax on
 set mouse=a
 set laststatus=0
+set number
+set cursorline
 
 ":autocmd InsertEnter * set cul
 ":autocmd InsertLeave * set nocul

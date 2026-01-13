@@ -53,3 +53,21 @@
 [submodule ".vim/pack/plugins/opt/nvim-lspconfig"]
 	path = .vim/pack/plugins/opt/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule ".vim/pack/plugins/opt/snacks.nvim"]
+	path = .vim/pack/plugins/opt/snacks.nvim
+	url = https://github.com/folke/snacks.nvim.git
+[submodule ".vim/pack/plugins/opt/which-key.nvim"]
+	path = .vim/pack/plugins/opt/which-key.nvim
+	url = https://github.com/folke/which-key.nvim.git
+[submodule ".vim/pack/plugins/opt/mini.icons"]
+	path = .vim/pack/plugins/opt/mini.icons
+	url = https://github.com/nvim-mini/mini.icons.git
+[submodule ".vim/pack/plugins/opt/nvim-web-devicons"]
+	path = .vim/pack/plugins/opt/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons.git
+[submodule ".vim/pack/plugins/opt/vim-rsi"]
+	path = .vim/pack/plugins/opt/vim-rsi
+	url = https://github.com/tpope/vim-rsi.git
+[submodule ".vim/pack/plugins/opt/blink.cmp"]
+	path = .vim/pack/plugins/opt/blink.cmp
+	url = https://github.com/saghen/blink.cmp.git
