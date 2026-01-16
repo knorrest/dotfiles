@@ -135,9 +135,10 @@ command! -bang -nargs=* MyAg call fzf#vim#ag(<q-args>, {'options': '--delimiter 
 
 syntax on
 set mouse=a
-set laststatus=0
+set laststatus=2
 set number
 set cursorline
+set scrolloff=5
 
 ":autocmd InsertEnter * set cul
 ":autocmd InsertLeave * set nocul
