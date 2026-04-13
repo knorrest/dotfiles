@@ -66,6 +66,7 @@ vim.keymap.set('x', 'gq', function() vim.lsp.buf.format({async = true}) end, { d
 vim.keymap.set('n', '<leader><leader>p', function() Snacks.picker.pickers() end, { desc = 'Find picker' })
 vim.keymap.set('n', '<leader><leader>f', function() Snacks.picker.files() end, { desc = 'Find file' })
 vim.keymap.set('n', '<leader><leader>b', function() Snacks.picker.buffers() end, { desc = 'Find buffer' })
+vim.keymap.set('n', '<leader><leader>s', function() Snacks.picker.smart() end, { desc = 'Smart' })
 vim.keymap.set('n', '<leader><leader>e', function() Snacks.picker.explorer() end, { desc = 'File explorer' })
 vim.keymap.set('n', '<leader>/', function() Snacks.picker.grep() end, { desc = 'Search in files' })
 vim.keymap.set('x', '<leader>*', function() Snacks.picker.grep({ search = get_visual_selection() }) end, { desc = 'Search selection' })

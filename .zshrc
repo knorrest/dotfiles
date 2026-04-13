@@ -121,11 +121,9 @@ PROMPT='
 #LSCOLORS="exfxcxdxbxegedabagacad"
 LSCOLORS="gxfxcxdxbxegedabagacad"
 
-
 [ -f ~/.git_prompt.zsh ] && source ~/.git_prompt.zsh
 [ -f ~/.zsh_functions ] && source ~/.zsh_functions
-#[ -f ~/.fzf_functions ] && source ~/.fzf_functions
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 #eval "$(direnv hook zsh)"
 

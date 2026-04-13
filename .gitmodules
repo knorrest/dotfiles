@@ -1,37 +1,37 @@
-[submodule ".vim/pack/plugins/start/vim-sexp"]
+[submodule ".vim/pack/plugins/opt/vim-sexp"]
 	path = .vim/pack/plugins/opt/vim-sexp
 	url = git@github.com:guns/vim-sexp.git
-[submodule ".vim/pack/plugins/start/ale"]
+[submodule ".vim/pack/plugins/opt/ale"]
 	path = .vim/pack/plugins/opt/ale
 	url = https://github.com/dense-analysis/ale.git
-[submodule ".vim/pack/plugins/start/fzf"]
+[submodule ".vim/pack/plugins/opt/fzf"]
 	path = .vim/pack/plugins/opt/fzf
 	url = git@github.com:junegunn/fzf.git
-[submodule ".vim/pack/plugins/start/fzf.vim"]
+[submodule ".vim/pack/plugins/opt/fzf.vim"]
 	path = .vim/pack/plugins/opt/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
-[submodule ".vim/pack/plugins/start/vim-sneak"]
+[submodule ".vim/pack/plugins/opt/vim-sneak"]
 	path = .vim/pack/plugins/opt/vim-sneak
 	url = git@github.com:justinmk/vim-sneak.git
-[submodule ".vim/pack/plugins/start/fireplace"]
+[submodule ".vim/pack/plugins/opt/fireplace"]
 	path = .vim/pack/plugins/opt/fireplace
 	url = https://tpope.io/vim/fireplace.git
-[submodule ".vim/pack/plugins/start/sensible"]
+[submodule ".vim/pack/plugins/opt/sensible"]
 	path = .vim/pack/plugins/opt/sensible
 	url = https://tpope.io/vim/sensible.git
-[submodule ".vim/pack/plugins/start/sleuth"]
+[submodule ".vim/pack/plugins/opt/sleuth"]
 	path = .vim/pack/plugins/opt/sleuth
 	url = https://tpope.io/vim/sleuth.git
-[submodule ".vim/pack/plugins/start/surround"]
+[submodule ".vim/pack/plugins/opt/surround"]
 	path = .vim/pack/plugins/opt/surround
 	url = https://tpope.io/vim/surround.git
-[submodule ".vim/pack/plugins/start/unimpaired"]
+[submodule ".vim/pack/plugins/opt/unimpaired"]
 	path = .vim/pack/plugins/opt/unimpaired
 	url = https://tpope.io/vim/unimpaired.git
-[submodule ".vim/pack/plugins/start/vim-repeat"]
+[submodule ".vim/pack/plugins/opt/vim-repeat"]
 	path = .vim/pack/plugins/opt/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
-[submodule ".vim/pack/plugins/start/vim-sexp-mappings-for-regular-people"]
+[submodule ".vim/pack/plugins/opt/vim-sexp-mappings-for-regular-people"]
 	path = .vim/pack/plugins/opt/vim-sexp-mappings-for-regular-people
 	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people.git
 [submodule ".vim/pack/plugins/opt/conjure"]
@@ -59,9 +59,6 @@
 [submodule ".vim/pack/plugins/opt/which-key.nvim"]
 	path = .vim/pack/plugins/opt/which-key.nvim
 	url = https://github.com/folke/which-key.nvim.git
-[submodule ".vim/pack/plugins/opt/mini.icons"]
-	path = .vim/pack/plugins/opt/mini.icons
-	url = https://github.com/nvim-mini/mini.icons.git
 [submodule ".vim/pack/plugins/opt/nvim-web-devicons"]
 	path = .vim/pack/plugins/opt/nvim-web-devicons
 	url = https://github.com/nvim-tree/nvim-web-devicons.git
@@ -71,3 +68,6 @@
 [submodule ".vim/pack/plugins/opt/blink.cmp"]
 	path = .vim/pack/plugins/opt/blink.cmp
 	url = https://github.com/saghen/blink.cmp.git
+[submodule ".vim/pack/plugins/opt/mini.icons"]
+	path = .vim/pack/plugins/opt/mini.icons
+	url = https://github.com/nvim-mini/mini.icons.git
