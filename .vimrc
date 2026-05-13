@@ -77,6 +77,10 @@ vmap <Leader>p "+p
 map <Leader>P "+P
 vmap <Leader>P "+P
 
+" copy file path/name to clipboard
+nnoremap <leader>fp :let @+=expand("%")<CR>
+nnoremap <leader>fn :let @+=expand("%:t")<CR>
+
 " allows incsearch highlighting for range commands
 " (acts like :?foo?t. but separate search from action, /foo then $t)
 cnoremap $t <CR>:t''<CR>
