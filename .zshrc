@@ -151,3 +151,4 @@ bindkey -M vicmd ' ' edit-command-line
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="$PATH:/Users/kalle/.dotnet/tools"
 export PATH=$PATH:/Users/kalle/.local/bin
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
