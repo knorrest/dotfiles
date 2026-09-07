@@ -2,7 +2,7 @@
 export PATH="/usr/local/opt/sphinx-doc/bin:$HOME/bin:$PATH"
 export CPATH=`xcrun --show-sdk-path`/usr/include
 export JAVA_HOME=$(/usr/libexec/java_home -v25)
-export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-jdk-25.0.1+8.1/Contents/Home
+export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-community-openjdk-23/Contents/Home
 
 # User configuration
 
@@ -65,6 +65,8 @@ precmd_functions+=(_fix_cursor)
 # Enable a few readline shortcuts in insert mode
 bindkey -M viins '^A' beginning-of-line
 bindkey -M viins '^E' end-of-line
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
 
 # command aliases
 alias ls='ls -G' 

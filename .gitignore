@@ -27,3 +27,5 @@ scratch.clj
 /tags
 # antlr test input
 *.input.txt
+
+**/.claude/settings.local.json
