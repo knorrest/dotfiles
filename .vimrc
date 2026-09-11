@@ -49,6 +49,7 @@ endif
 " General shortcuts
 " nnoremap <leader>r :source ~/.vimrc<CR>
 "imap jj <Esc>
+nnoremap <leader><leader>g :vertical Git<CR>
 
 
 " Switch the annoying arrow keys when using the :e command

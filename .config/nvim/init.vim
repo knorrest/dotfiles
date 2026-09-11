@@ -15,7 +15,23 @@ local Snacks = require("snacks")
 Snacks.setup({
   image = { enabled = false },  -- Disable image previews
   icons = { enabled = false },   -- Disable icons
-  picker = { enabled = true }
+  picker = {
+    enabled = true,
+    win = {
+      input = {
+        keys = {
+          ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+          ["<c-\\>"] = { "toggle_ignored", mode = { "i", "n" } },
+        }
+      },
+      list = {
+        keys = {
+          ["<c-h>"] = { "toggle_hidden", mode = { "n" } },
+          ["<c-\\>"] = { "toggle_ignored", mode = { "n" } },
+        }
+      }
+    }
+  }
 })
 
 local wk = require("which-key")
