@@ -29,3 +29,4 @@ scratch.clj
 *.input.txt
 
 **/.claude/settings.local.json
+.claude/worktrees/
