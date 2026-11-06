@@ -115,10 +115,13 @@ source $(brew --prefix nvm)/nvm.sh
 alias ctags="$(brew --prefix)/bin/ctags"
 
 # Prompt
-
-PROMPT='
-%B%~ %b$(gitprompt)
-%(?.%F{green}.%F{red})▶%f '
+if [ "$USER" = "root" ]; then
+  export PROMPT=$' %B%F{red}%~%f %b$(gitprompt)\n%(?.%F{green}.%F{red})▶%f '
+elif [ -n "${SANDVAULT}" ]; then
+  export PROMPT=$' %B%F{yellow}%~%f %b$(gitprompt)\n%(?.%F{green}.%F{red})▶%f '
+else
+  export PROMPT=$' %B%~ %b$(gitprompt)\n%(?.%F{green}.%F{red})▶%f '
+fi
 
 #LSCOLORS="exfxcxdxbxegedabagacad"
 LSCOLORS="gxfxcxdxbxegedabagacad"

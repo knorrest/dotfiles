@@ -57,10 +57,10 @@ blink.setup({
       sources = {
 	  default = { "lsp", "path", "snippets", "buffer" },
       },
-      fuzzy = { 
+      fuzzy = {
 	  implementation = "prefer_rust_with_warning",
 	  prebuilt_binaries = {
-	      force_version = "v1.8.0"
+	      force_version = "v1.10.2"
 	  }
       },
 })

@@ -1,9 +1,15 @@
-# Create (or attach to) a configured session group
+# Create (or attach to) a session group
 tsg () {
-  export TMUX_SESSION=$1
-  if ! $(tmux has-session -t "${TMUX_SESSION}") ; then
-    tmux new-session -s "${TMUX_SESSION}" \; source-file "$HOME/.tmux/${TMUX_SESSION}.conf"
-  else
-    tmux new-session -t "${TMUX_SESSION}" \; set-option destroy-unattached
-  fi
+  local session=$1
+  if ! tmux has-session -t "$session" 2>/dev/null; then
+    tmux new-session -s "$session"
+    else
+      tmux new-session -t "$session" \; set-option destroy-unattached
+    fi
 }
+
+# Apply the window/pane layout from ~/.tmux/<name>.conf to the current session
+tsl () {
+  tmux source-file "$HOME/.tmux/${1}.conf"
+}
+

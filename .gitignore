@@ -5,7 +5,7 @@
 .clj-kondo/
 .lsp/
 .vscode/
-tmp/
+tmp
 caches/
 .caches/
 knorrest/
