@@ -1,0 +1,89 @@
+onboarding = false
+
+# Herdr config modelled on ~/.tmux.conf. Herdr's pane/tab/workspace model maps to
+# tmux like this: pane = pane, tab = window, workspace = session.
+
+[theme]
+# Follow the host terminal's ANSI palette (tmux just inherits it too).
+name = "terminal"
+
+[theme.custom]
+# Muted blue shared by the active workspace row in the sidebar and (via accent) the active tab.
+active_row_bg = "#37466a"
+accent = "#37466a"
+
+[terminal]
+# tmux: split-window -c "#{pane_current_path}"
+new_cwd = "follow"
+
+[keys]
+# tmux: set -g prefix C-Space
+prefix = "ctrl+space"
+# tmux: bind C-Space last-window. Herdr has no last-tab action, but last_pane jumps back to the
+# previously focused pane across workspaces and tabs, which gives the same back-and-forth.
+# Ctrl+Space twice is reserved by herdr (sends a literal ctrl+space), so use Ctrl+Space then Space.
+last_pane = "prefix+space"
+
+# tmux: bind h/j/k/l select-pane -L/-D/-U/-R (same as herdr's defaults, listed for clarity)
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# tmux: bind v split-window -h / bind s split-window -v
+split_vertical = "prefix+v"      # herdr "split right"
+split_horizontal = "prefix+s"    # herdr "split down" (default prefix+minus)
+settings = "prefix+shift+s"      # moved, prefix+s is now split down
+
+# tmux: bind n new-window / bind c kill-pane
+new_tab = "prefix+n"
+rename_tab = "prefix+,"          # tmux: bind , rename-window (default)
+close_pane = "prefix+x"
+copy_mode = "prefix+c"           # moved from prefix+[, which is now previous_agent
+next_tab = ["prefix+right", "ctrl+alt+]"]        # tmux has no next-window on prefix+n after the rebind; prefix+p and prefix+1..9 still work
+previous_tab = ["prefix+left", "prefix+p", "ctrl+alt+["]
+switch_tab = "prefix+1..9"       # tmux: base-index 1
+
+# tmux: bind Up switch-client -p / bind Down switch-client -n (workspace = session)
+previous_workspace = "prefix+up"
+next_workspace = "prefix+down"
+
+# Move between agents in the sidebar's agent panel
+previous_agent = "prefix+["
+next_agent = "prefix+]"
+
+# tmux: bind r source-file ~/.tmux.conf
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"   # moved, prefix+r now reloads the config
+
+# tmux: bind b list-keys -N (key binding list)
+help = "prefix+b"
+toggle_sidebar = "prefix+shift+b"
+
+[ui]
+# tmux: set -g mouse on
+mouse_capture = true
+# tmux: unbind MouseDragEnd1Pane (stay in copy mode on mouse up, copy explicitly with y)
+copy_on_select = true
+# tmux: bind -T copy-mode-vi WheelUpPane ... -N 1 (fewer rows per wheel tick)
+mouse_scroll_lines = 1
+
+# Always show the tab row so the folder/branch banner stays visible.
+hide_tab_bar_when_single_tab = false
+tab_bar_position = "top"
+# tmux: status-right '#S'. Banner: git branch of the focused pane (the folders are in the workspace name, see hwr).
+tab_bar_right = [
+  { type = "command", command = 'git branch --show-current 2>/dev/null', interval_seconds = 2, timeout_seconds = 2 },
+  { type = "text", text = "herdr" },
+]
+tab_bar_right_separator = " · "
+
+# tmux: no sidebar; start collapsed, toggle with prefix+shift+b
+sidebar_start_collapsed = true
+
+# tmux: set -g set-titles-string "#W#F -#{session_alerts} (#S) - #{pane_current_command}"
+window_title = "{tab} ({workspace}) - {terminal_title}"
+
+# tmux: no borders around a single pane, internal splitters only
+pane_borders = "auto"
+pane_outer_borders = false
