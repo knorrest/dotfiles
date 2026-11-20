@@ -1,6 +1,135 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath=&runtimepath
-source ~/.vimrc
+let mapleader = " "
+let maplocalleader = " "
+
+" Load plugins
+lua << EOF
+local gh = function(repo) return 'https://github.com/' .. repo end
+vim.pack.add({
+  gh('tpope/vim-surround'),
+  gh('tpope/vim-repeat'),
+  gh('justinmk/vim-sneak'),
+  gh('guns/vim-sexp'),
+  gh('tpope/vim-sexp-mappings-for-regular-people'),
+  gh('tpope/vim-vinegar'),
+  gh('tpope/vim-fugitive'),
+  gh('tpope/vim-rsi'),
+  gh('dense-analysis/ale'),
+  gh('junegunn/fzf'),
+  gh('junegunn/fzf.vim'),
+  gh('tpope/vim-sensible'),
+  gh('tpope/vim-sleuth'),
+  gh('Olical/conjure'),
+  gh('Mofiqul/vscode.nvim'),
+  gh('nvim-treesitter/nvim-treesitter'),
+  gh('neovim/nvim-lspconfig'),
+  { src = gh('folke/snacks.nvim'), version = 'stable' },
+  { src = gh('folke/which-key.nvim'), version = 'stable' },
+  gh('nvim-tree/nvim-web-devicons'),
+  gh('nvim-mini/mini.icons'),
+  { src = gh('saghen/blink.cmp'), version = vim.version.range('1.*') },
+})
+EOF
+
+if exists('$TMUX')
+  let g:fzf_layout = { 'tmux': '98%,98%' }
+else
+  let g:fzf_layout = { 'window': { 'width': 0.98, 'height': 0.98 } }
+endif
+
+" General shortcuts
+nnoremap <leader><leader>g :vertical Git<CR>
+
+" Switch the annoying arrow keys when using the :e command
+set wildmode=longest:full,full
+
+" https://vi.stackexchange.com/questions/22627/switching-arrow-key-mappings-for-wildmenu-tab-completion
+set wildcharm=<C-Z>
+cnoremap <expr> <up> wildmenumode() ? "\<left>" : "\<up>"
+cnoremap <expr> <down> wildmenumode() ? "\<right>" : "\<down>"
+cnoremap <expr> <left> wildmenumode() ? "\<up>" : "\<left>"
+cnoremap <expr> <right> wildmenumode() ? " \<bs>\<C-Z>" : "\<right>"
+
+" Turn off cursor keys in normal mode
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" Open vertical splits on the right side
+set splitright
+
+" copy/paste to "+ (clipboard)
+vmap <Leader>y "+y
+map <Leader>p "+p
+vmap <Leader>p "+p
+map <Leader>P "+P
+vmap <Leader>P "+P
+
+" copy file path/name to clipboard
+nnoremap <leader>fp :let @+=expand("%")<CR>
+nnoremap <leader>fn :let @+=expand("%:t")<CR>
+
+" allows incsearch highlighting for range commands
+" (acts like :?foo?t. but separate search from action, /foo then $t)
+cnoremap $t <CR>:t''<CR>
+cnoremap $T <CR>:T''<CR>
+cnoremap $m <CR>:m''<CR>
+cnoremap $M <CR>:M''<CR>
+cnoremap $d <CR>:d<CR>``
+
+" only highlight search while in cmd line
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
+
+" Async Lint Engine config
+let g:ale_linters = {'clojure': ['clj-kondo']}
+let g:ale_pattern_options = {'conjure-log.*.cljc': {'ale_enabled': 0}}
+" Easy navigation between errors
+nmap [w <Plug>(ale_previous_wrap)
+nmap ]w <Plug>(ale_next_wrap)
+
+" mappings like unimpaired
+nnoremap <silent> [a :<C-U>previous<CR>
+nnoremap <silent> ]a :<C-U>next<CR>
+nnoremap <silent> [A :<C-U>first<CR>
+nnoremap <silent> ]A :<C-U>last<CR>
+nnoremap <silent> [b :<C-U>bprevious<CR>
+nnoremap <silent> ]b :<C-U>bnext<CR>
+nnoremap <silent> [B :<C-U>bfirst<CR>
+nnoremap <silent> ]B :<C-U>blast<CR>
+nnoremap <silent> [l :<C-U>lprevious<CR>
+nnoremap <silent> ]l :<C-U>lnext<CR>
+nnoremap <silent> [L :<C-U>lfirst<CR>
+nnoremap <silent> ]L :<C-U>llast<CR>
+nnoremap <silent> [q :<C-U>cprevious<CR>
+nnoremap <silent> ]q :<C-U>cnext<CR>
+nnoremap <silent> [Q :<C-U>cfirst<CR>
+nnoremap <silent> ]Q :<C-U>clast<CR>
+
+nmap <C-P> :FZF<CR>
+
+if executable('rg')
+  " Use rg over grep
+  set grepprg=rg\ --vimgrep\ --hidden\ --no-heading\ 
+endif
+
+" Custom fzf commands
+command! -bang -nargs=* MyRg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " .
+            \ <q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* MyAg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+syntax on
+set mouse=a
+set laststatus=2
+set number
+set cursorline
+set scrolloff=5
+
+autocmd VimEnter * normal :
 
 lua << EOF
 
@@ -59,9 +188,6 @@ blink.setup({
       },
       fuzzy = {
 	  implementation = "prefer_rust_with_warning",
-	  prebuilt_binaries = {
-	      force_version = "v1.10.2"
-	  }
       },
 })
 

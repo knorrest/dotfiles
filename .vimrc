@@ -1,51 +1,6 @@
 :let mapleader = " "
 :let maplocalleader = " "
 
-" Load plugins
-packadd! surround
-packadd! vim-repeat
-packadd! vim-sneak
-packadd! vim-sexp
-packadd! vim-sexp-mappings-for-regular-people
-packadd! vim-vinegar
-packadd! vim-fugitive
-packadd! vim-rsi
-
-" packadd! vim-visual-star-search
-if !exists('g:vscode')
-  packadd! ale
-  packadd! fzf
-  packadd! fzf.vim
-  packadd! sensible
-  packadd! sleuth
-  " packadd! vlime
-  if has('nvim')
-    packadd! conjure
-    packadd! vscode.nvim
-    packadd! nvim-treesitter
-    packadd! nvim-lspconfig
-    packadd! snacks.nvim
-    packadd! which-key.nvim
-    packadd! nvim-web-devicons
-    packadd! mini.icons
-    packadd! blink.cmp
-  else
-    packadd! fireplace
-  endif
-
-  if exists('$TMUX')
-    let g:fzf_layout = { 'tmux': '98%,98%' }
-  else
-    let g:fzf_layout = { 'window': { 'width': 0.98, 'height': 0.98 } }
-  endif
-
-else
-  if has('nvim')
-    " exit insert mode when switching buffers
-    au BufEnter * stopinsert
-  endif
-endif
-
 " General shortcuts
 " nnoremap <leader>r :source ~/.vimrc<CR>
 "imap jj <Esc>
