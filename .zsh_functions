@@ -1,10 +1,11 @@
 # Create (or attach to) a session group
 tsg () {
-  local session=$1
+  # Use last two folders of path as session name if not specified
+  local session=${1:-${PWD:h:t}/${PWD:t}}
   if ! tmux has-session -t "$session" 2>/dev/null; then
     tmux new-session -s "$session"
     else
-      tmux new-session -t "$session" \; set-option destroy-unattached
+      tmux new-session -t "$session" \; set-option destroy-unattached on
     fi
 }
 
@@ -13,3 +14,62 @@ tsl () {
   tmux source-file "$HOME/.tmux/${1}.conf"
 }
 
+# Set the session title to "repo/folder (branch)"
+tst () {
+  if [ -z "$TMUX" ]; then
+    echo "tst: not inside tmux" >&2
+    return 1
+  fi
+
+  local dir root name branch
+  dir=$(tmux display-message -p '#{session_path}')
+
+  if root=$(git -C "$dir" rev-parse --show-toplevel 2>/dev/null); then
+    name=$(basename "$(dirname "$root")")/$(basename "$root")
+    branch=$(git -C "$dir" symbolic-ref --short -q HEAD || git -C "$dir" rev-parse --short HEAD)
+    name="$name ($branch)"
+  else
+    name=$(basename "$(dirname "$dir")")/$(basename "$dir")
+  fi
+
+  # tmux does not allow '.' or ':' in session names
+  name=${name//[.:]/_}
+
+  tmux rename-session "$name"
+}
+
+# cd to the current session path
+csp () {
+  [ -n "$TMUX" ] || { echo "csp: not inside tmux" >&2; return 1; }
+  cd "$(tmux display-message -p '#{session_path}')"
+}
+
+# List tmux sessions, pick one, and join its group in a new self-destroying session 
+tsc () {
+  local sessions
+  sessions=("${(@f)$(tmux list-sessions -F '#{session_name}' 2>/dev/null)}")
+  if [[ -z "${sessions[1]}" ]]; then
+    echo "No tmux sessions running" >&2
+    return 1
+  fi
+  local target
+  if [[ -n "$1" ]]; then
+    target=$1
+  else
+    PS3="Attach to session: "
+    select target in "${sessions[@]}"; do
+      [[ -n "$target" ]] && break
+    done
+    [[ -z "$target" ]] && return 1
+  fi
+  tmux new-session -t "$target" \; set-option destroy-unattached on
+}
+
+# herdr workspace rename: name the current workspace after the last two directories
+hwr() {
+  [[ -n $HERDR_WORKSPACE_ID ]] || { echo "hwr: not in a herdr pane" >&2; return 1 }
+  local dir=${PWD} root name
+  root=$(git rev-parse --show-toplevel 2>/dev/null) && dir=$root
+  name=${*:-${dir:h:t}/${dir:t}}
+  herdr workspace rename "$HERDR_WORKSPACE_ID" "$name" >/dev/null
+}

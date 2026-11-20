@@ -65,3 +65,7 @@
 	template = /Users/kalle/.stCommitMsg
 [pull]
 	ff = only
+
+[safe]
+	directory = /Users/Shared/sv-kalle/worktrees/*
+	directory = /Users/Shared/sv-kalle/repos/*

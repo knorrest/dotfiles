@@ -94,6 +94,9 @@ alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
 
+# herdr/sandvault/claude
+alias svc='HERDR_AGENT=claude herdr-agent sv claude'
+
 # dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
@@ -157,3 +160,5 @@ export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="$PATH:/Users/kalle/.dotnet/tools"
 export PATH=$PATH:/Users/kalle/.local/bin
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+export PATH=/opt/homebrew/opt/util-linux/bin:$PATH
+export PATH=/opt/homebrew/opt/util-linux/sbin:$PATH

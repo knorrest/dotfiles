@@ -8,7 +8,7 @@
 tmp
 caches/
 .caches/
-knorrest/
+knorrest
 # Files anywhere
 .DS_Store
 .env
